@@ -22,6 +22,7 @@ struct bar_manager
   struct rgba_color foreground_color;
   struct rgba_color background_color;
   struct rgba_color space_icon_color;
+  struct rgba_color space_inactive_icon_color;
   struct rgba_color battery_icon_color;
   struct rgba_color power_icon_color;
   struct rgba_color clock_icon_color;
@@ -38,6 +39,7 @@ struct bar_manager
 void bar_manager_set_foreground_color(struct bar_manager *bar_manager, uint32_t color);
 void bar_manager_set_background_color(struct bar_manager *bar_manager, uint32_t color);
 void bar_manager_set_space_icon_color(struct bar_manager *bar_manager, uint32_t color);
+void bar_manager_set_space_inactive_icon_color(struct bar_manager *bar_manager, uint32_t color);
 void bar_manager_set_battery_icon_color(struct bar_manager *bar_manager, uint32_t color);
 void bar_manager_set_power_icon_color(struct bar_manager *bar_manager, uint32_t color);
 void bar_manager_set_clock_icon_color(struct bar_manager *bar_manager, uint32_t color);

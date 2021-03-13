@@ -244,6 +244,7 @@ void bar_refresh(struct bar *bar)
               pos.x += g_bar_manager.spacing_left;
             }
 
+            space_line.color = g_bar_manager.space_inactive_icon_color;
             if (sid == space_list[i]) {
               space_line.color = g_bar_manager.space_icon_color;
             }

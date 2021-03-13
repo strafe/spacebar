@@ -70,25 +70,26 @@ Here's a configuration taken from [the examples directory](examples):
 ```
 #!/usr/bin/env sh
 
-spacebar -m config position           top
-spacebar -m config height             26
-spacebar -m config spacing_left       25
-spacebar -m config spacing_right      15
-spacebar -m config text_font          "Helvetica Neue:Bold:12.0"
-spacebar -m config icon_font          "Font Awesome 5 Free:Regular:12.0"
-spacebar -m config background_color   0xff202020
-spacebar -m config foreground_color   0xffa8a8a8
-spacebar -m config space_icon_color   0xff458588
-spacebar -m config power_icon_color   0xffcd950c
-spacebar -m config battery_icon_color 0xffd75f5f
-spacebar -m config dnd_icon_color     0xffa8a8a8
-spacebar -m config clock_icon_color   0xffa8a8a8
-spacebar -m config space_icon_strip   I II III IV V VI VII VIII IX X
-spacebar -m config power_icon_strip    
-spacebar -m config space_icon         
-spacebar -m config clock_icon         
-spacebar -m config dnd_icon           
-spacebar -m config clock_format       "%d/%m/%y %R"
+spacebar -m config position                    top
+spacebar -m config height                      26
+spacebar -m config spacing_left                25
+spacebar -m config spacing_right               15
+spacebar -m config text_font                   "Helvetica Neue:Bold:12.0"
+spacebar -m config icon_font                   "Font Awesome 5 Free:Regular:12.0"
+spacebar -m config background_color            0xff202020
+spacebar -m config foreground_color            0xffa8a8a8
+spacebar -m config space_icon_color            0xff458588
+spacebar -m config space_inactive_icon_color   0xff565656
+spacebar -m config power_icon_color            0xffcd950c
+spacebar -m config battery_icon_color          0xffd75f5f
+spacebar -m config dnd_icon_color              0xffa8a8a8
+spacebar -m config clock_icon_color            0xffa8a8a8
+spacebar -m config space_icon_strip            I II III IV V VI VII VIII IX X
+spacebar -m config power_icon_strip             
+spacebar -m config space_icon                  
+spacebar -m config clock_icon                  
+spacebar -m config dnd_icon                    
+spacebar -m config clock_format                "%d/%m/%y %R"
 
 echo "spacebar configuration loaded.."
 ```
@@ -103,25 +104,26 @@ If you're using the `services.spacebar` module from [nix-darwin](https://github.
   services.spacebar.enable = true;
   services.spacebar.package = pkgs.spacebar;
   services.spacebar.config = {
-    position           = "top";
-    height             = 26;
-    spacing_left       = 25;
-    spacing_right      = 15;
-    text_font          = ''"Helvetica Neue:Bold:12.0"'';
-    icon_font          = ''"Font Awesome 5 Free:Regular:12.0"'';
-    background_color   = "0xff202020";
-    foreground_color   = "0xffa8a8a8";
-    space_icon_color   = "0xff458588";
-    power_icon_color   = "0xffcd950c";
-    battery_icon_color = "0xffd75f5f";
-    dnd_icon_color     = "0xffa8a8a8";
-    clock_icon_color   = "0xffa8a8a8";
-    space_icon_strip   = "I II III IV V VI VII VIII IX X";
-    power_icon_strip   = " ";
-    space_icon         = "";
-    clock_icon         = "";
-    dnd_icon           = "";
-    clock_format       = ''"%d/%m/%y %R"'';
+    position                  = "top";
+    height                    = 26;
+    spacing_left              = 25;
+    spacing_right             = 15;
+    text_font                 = ''"Helvetica Neue:Bold:12.0"'';
+    icon_font                 = ''"Font Awesome 5 Free:Regular:12.0"'';
+    background_color          = "0xff202020";
+    foreground_color          = "0xffa8a8a8";
+    space_icon_color          = "0xff458588";
+    space_inactive_icon_color = "0xff565656";
+    power_icon_color          = "0xffcd950c";
+    battery_icon_color        = "0xffd75f5f";
+    dnd_icon_color            = "0xffa8a8a8";
+    clock_icon_color          = "0xffa8a8a8";
+    space_icon_strip          = "I II III IV V VI VII VIII IX X";
+    power_icon_strip          = " ";
+    space_icon                = "";
+    clock_icon                = "";
+    dnd_icon                  = "";
+    clock_format              = ''"%d/%m/%y %R"'';
   };
 }
 ```

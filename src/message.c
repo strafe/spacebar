@@ -11,26 +11,27 @@ extern bool g_verbose;
 #define DOMAIN_CONFIG  "config"
 
 /* --------------------------------DOMAIN CONFIG-------------------------------- */
-#define COMMAND_CONFIG_DEBUG_OUTPUT            "debug_output"
-#define COMMAND_CONFIG_BAR_TEXT_FONT           "text_font"
-#define COMMAND_CONFIG_BAR_ICON_FONT           "icon_font"
-#define COMMAND_CONFIG_BAR_SPACE_ICON_COLOR    "space_icon_color"
-#define COMMAND_CONFIG_BAR_BATTERY_ICON_COLOR  "battery_icon_color"
-#define COMMAND_CONFIG_BAR_POWER_ICON_COLOR    "power_icon_color"
-#define COMMAND_CONFIG_BAR_CLOCK_ICON_COLOR    "clock_icon_color"
-#define COMMAND_CONFIG_BAR_DND_ICON_COLOR      "dnd_icon_color"
-#define COMMAND_CONFIG_BAR_BACKGROUND          "background_color"
-#define COMMAND_CONFIG_BAR_FOREGROUND          "foreground_color"
-#define COMMAND_CONFIG_BAR_SPACE_STRIP         "space_icon_strip"
-#define COMMAND_CONFIG_BAR_POWER_STRIP         "power_icon_strip"
-#define COMMAND_CONFIG_BAR_SPACE_ICON          "space_icon"
-#define COMMAND_CONFIG_BAR_CLOCK_ICON          "clock_icon"
-#define COMMAND_CONFIG_BAR_CLOCK_FORMAT        "clock_format"
-#define COMMAND_CONFIG_BAR_DND_ICON            "dnd_icon"
-#define COMMAND_CONFIG_BAR_POSITION            "position"
-#define COMMAND_CONFIG_BAR_HEIGHT              "height"
-#define COMMAND_CONFIG_BAR_SPACING_LEFT        "spacing_left"
-#define COMMAND_CONFIG_BAR_SPACING_RIGHT       "spacing_right"
+#define COMMAND_CONFIG_DEBUG_OUTPUT                     "debug_output"
+#define COMMAND_CONFIG_BAR_TEXT_FONT                    "text_font"
+#define COMMAND_CONFIG_BAR_ICON_FONT                    "icon_font"
+#define COMMAND_CONFIG_BAR_SPACE_ICON_COLOR             "space_icon_color"
+#define COMMAND_CONFIG_BAR_SPACE_INACTIVE_ICON_COLOR    "space_inactive_icon_color"
+#define COMMAND_CONFIG_BAR_BATTERY_ICON_COLOR           "battery_icon_color"
+#define COMMAND_CONFIG_BAR_POWER_ICON_COLOR             "power_icon_color"
+#define COMMAND_CONFIG_BAR_CLOCK_ICON_COLOR             "clock_icon_color"
+#define COMMAND_CONFIG_BAR_DND_ICON_COLOR               "dnd_icon_color"
+#define COMMAND_CONFIG_BAR_BACKGROUND                   "background_color"
+#define COMMAND_CONFIG_BAR_FOREGROUND                   "foreground_color"
+#define COMMAND_CONFIG_BAR_SPACE_STRIP                  "space_icon_strip"
+#define COMMAND_CONFIG_BAR_POWER_STRIP                  "power_icon_strip"
+#define COMMAND_CONFIG_BAR_SPACE_ICON                   "space_icon"
+#define COMMAND_CONFIG_BAR_CLOCK_ICON                   "clock_icon"
+#define COMMAND_CONFIG_BAR_CLOCK_FORMAT                 "clock_format"
+#define COMMAND_CONFIG_BAR_DND_ICON                     "dnd_icon"
+#define COMMAND_CONFIG_BAR_POSITION                     "position"
+#define COMMAND_CONFIG_BAR_HEIGHT                       "height"
+#define COMMAND_CONFIG_BAR_SPACING_LEFT                 "spacing_left"
+#define COMMAND_CONFIG_BAR_SPACING_RIGHT                "spacing_right"
 
 /* --------------------------------COMMON ARGUMENTS----------------------------- */
 #define ARGUMENT_COMMON_VAL_ON     "on"
@@ -222,6 +223,18 @@ static void handle_domain_config(FILE *rsp, struct token domain, char *message)
             uint32_t color = token_to_uint32t(value);
             if (color) {
                 bar_manager_set_space_icon_color(&g_bar_manager, color);
+            } else {
+                daemon_fail(rsp, "unknown value '%.*s' given to command '%.*s' for domain '%.*s'\n", value.length, value.text, command.length, command.text, domain.length, domain.text);
+            }
+        }
+    } else if (token_equals(command, COMMAND_CONFIG_BAR_SPACE_INACTIVE_ICON_COLOR)) {
+        struct token value = get_token(&message);
+        if (!token_is_valid(value)) {
+            fprintf(rsp, "0x%x\n", g_bar_manager.space_inactive_icon_color.p);
+        } else {
+            uint32_t color = token_to_uint32t(value);
+            if (color) {
+                bar_manager_set_space_inactive_icon_color(&g_bar_manager, color);
             } else {
                 daemon_fail(rsp, "unknown value '%.*s' given to command '%.*s' for domain '%.*s'\n", value.length, value.text, command.length, command.text, domain.length, domain.text);
             }

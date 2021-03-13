@@ -106,6 +106,9 @@ Settings
 *space_icon_color* ['<COLOR>']::
     Color to use for drawing the current space icon.
 
+*space_inactive_icon_color* ['<COLOR>']::
+    Color to use for drawing inactive space icons.
+
 *clock_icon* ['<sym>']::
     Specify a symbol to represent the current time.
 

@@ -23,6 +23,12 @@ void bar_manager_set_space_icon_color(struct bar_manager *bar_manager, uint32_t 
   bar_manager_refresh(bar_manager);
 }
 
+void bar_manager_set_space_inactive_icon_color(struct bar_manager *bar_manager, uint32_t color)
+{
+  bar_manager->space_inactive_icon_color = rgba_color_from_hex(color);
+  bar_manager_refresh(bar_manager);
+}
+
 void bar_manager_set_battery_icon_color(struct bar_manager *bar_manager, uint32_t color)
 {
   bar_manager->battery_icon_color = rgba_color_from_hex(color);
@@ -265,6 +271,7 @@ void bar_manager_init(struct bar_manager *bar_manager)
     bar_manager_set_background_color(bar_manager, 0xff202020);
     bar_manager_set_foreground_color(bar_manager, 0xffa8a8a8);
     bar_manager_set_space_icon_color(bar_manager, 0xffd75f5f);
+    bar_manager_set_space_inactive_icon_color(bar_manager, 0xff565656);
     bar_manager_set_battery_icon_color(bar_manager, 0xffd75f5f);
     bar_manager_set_power_icon_color(bar_manager, 0xffcd950c);
     bar_manager_set_clock_icon_color(bar_manager, 0xffa8a8a8);
