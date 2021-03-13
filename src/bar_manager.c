@@ -113,7 +113,10 @@ void bar_manager_set_space_strip(struct bar_manager *bar_manager, char **icon_st
     }
 
     for (int i = 0; i < buf_len(bar_manager->_space_icon_strip); ++i) {
-        struct bar_line space_line = bar_prepare_line(bar_manager->i_font, bar_manager->_space_icon_strip[i], bar_manager->foreground_color);
+        struct bar_line space_line = strspn(bar_manager->_space_icon_strip[i], "0123456789") == strlen(bar_manager->_space_icon_strip[i])
+        ? bar_prepare_line(bar_manager->t_font, bar_manager->_space_icon_strip[i], bar_manager->foreground_color)
+        : bar_prepare_line(bar_manager->i_font, bar_manager->_space_icon_strip[i], bar_manager->foreground_color);
+
         buf_push(bar_manager->space_icon_strip, space_line);
     }
 
