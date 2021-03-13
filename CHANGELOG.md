@@ -8,6 +8,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 [Unreleased]: https://github.com/cmacrae/spacebar/compare/master...HEAD
 
+## [1.2.2](https://github.com/cmacrae/spacebar/releases/tag/v1.2.2) - 2021-03-13
+
+**Added**
+- Added the ability to set a unique foreground color for inactive spaces.
+- Implemented koekeishiya `socket_read` patch for macOS.
+- Fixed a few mistakes in documentation.
+- Now uses text font for numeric spaces.
+
 ## [1.2.1](https://github.com/cmacrae/spacebar/releases/tag/v1.2.1) - 2020-11-18
 
 **Changed**
