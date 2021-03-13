@@ -14,6 +14,10 @@ char *socket_read(int sockfd, int *len)
         result = temp;
         memcpy(result+cursor, buffer, bytes_read);
         cursor += bytes_read;
+
+        if (((result+cursor)[-1] == '\0') && ((result+cursor)[-2] == '\0')) {
+            break;
+        }
     }
 
     if (result && bytes_read != -1) {
